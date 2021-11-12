@@ -43,3 +43,4 @@ ng serve
 #Minimo1EAAFM
 
 P.D.: Debido a algún tipo de problema no me hacia push del modelo y el controller de Vacunas, por ello, en git aparecen dentro del backend pero fuera de las respectivas carpetas
+P.D.2: Ante la duda, los dos contribuidores que salen arriba soy yo, el problema es que al trabajar con cuentas de google distintas, antes de DSA hice una cuenta de github diferente y por ello cuando trabajo desde chrome/upc me sale uno (Angelfm98) y cuando trabajo desde chrome/personal me sale el otro (angelmetal98).

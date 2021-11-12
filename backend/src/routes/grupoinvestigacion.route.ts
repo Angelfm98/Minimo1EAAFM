@@ -1,21 +1,12 @@
 import { Router } from "express"; 
 import grupoinvestigacionController from '../controllers/grupoinvestigacion.controller'
 
-//Rutes grupos investigación
-/*
-○ Formulario para añadir un grupo de investigación que ha desarrollado una
-vacuna: nombre del grupo, descripción. Url, responsable del grupo
-○ Listado de grupos de investigación
-○ Edición de un grupo de investigación. (Esta funcionalidad es accesible desde el
-listado)
-*/
+
 const router = Router();
 
 router.get('/', grupoinvestigacionController.getAll);
-router.get('/:id', grupoinvestigacionController.getGrupoInvestigacion);
-router.post('/new',grupoinvestigacionController.newGrupoInvestigacion);
-router.put('/update/:id', grupoinvestigacionController.updateGrupoInvestigacion);
-router.delete('/:id', grupoinvestigacionController.deleteGrupoinvestigacion);
+router.get('/:id', grupoinvestigacionController.getPersonaVigilada);
+router.post('/new',grupoinvestigacionController.newPersonaVacunada);
+router.put('/update/:id', grupoinvestigacionController.updatePersonaLista);
 
-//Exportem router x utilitzar rutes a app.ts
 export default router;

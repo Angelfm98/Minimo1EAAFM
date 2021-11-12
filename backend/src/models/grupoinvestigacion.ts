@@ -2,29 +2,45 @@ import mongoose, { Schema, Document} from 'mongoose';
 
 //model grupoinvestigación
 const grupoinvestigacionSchema = new Schema({
-    nombregrupo: {
+    nombrePersona: {
         type: String
     },
     id: {
         type: String
     },
-    descripcion: {
+    fechaSeguimiento: {
         type: String
     },
-    responsable: {
+    dni: {
         type: String
     },
-    url: {
+    telefono: {
         type: String
+    },
+    fiebre: {
+        type: Boolean
+    },
+    tos: {
+        type: Boolean
+    },
+    difResp: {
+        type: Boolean
+    },
+    malGen: {
+        type: Boolean
     }
     });
 
 export interface IGrupoInvestigacion extends Document {
-    nombregrupo: String;
+    nombrePersona: String;
     id: String;
-    descripcion: String;
-    responsable: String;
-    url: String;
+    fechaSeguimiento: String;
+    dni: String;
+    telefono: String;
+    fiebre: Boolean;
+    tos: Boolean;
+    difResp: Boolean;
+    malGen: Boolean;
 }
 
 export default mongoose.model<IGrupoInvestigacion>('GrupoInvestigacion', grupoinvestigacionSchema);

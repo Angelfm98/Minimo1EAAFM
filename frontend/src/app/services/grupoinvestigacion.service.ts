@@ -11,29 +11,23 @@ export class GrupoinvestigacionService {
 
   constructor(private http: HttpClient) { }
 
-  //obtenir tots els grups
-  getGrupos(): Observable<GrupoInvestigacion[]>{
+  //Listar Personas
+  getLista(): Observable<GrupoInvestigacion[]>{
     return this.http.get<GrupoInvestigacion[]>(environment.apiURL + "/gruposinvestigacion");
   }
 
-  //obtenir un grup
-  getGrupo(id: String): Observable<GrupoInvestigacion>{
-    return this.http.get<GrupoInvestigacion>(environment.apiURL + "/gruposinvestigacion/" + id);
+  //Listar Una Persona a través del dni como parametro unico en cada individuo
+  getPersona(dni: String): Observable<GrupoInvestigacion>{
+    return this.http.get<GrupoInvestigacion>(environment.apiURL + "/gruposinvestigacion/" + dni);
   }
 
-  //afegir un grup
-  addGrupo(nuevogrupo: GrupoInvestigacion): Observable<any>{
-    return this.http.post(environment.apiURL + '/gruposinvestigacion/new', nuevogrupo);
+  //Añadir una persona
+  addPersona(nuevaPersona: GrupoInvestigacion): Observable<any>{
+    return this.http.post(environment.apiURL + '/gruposinvestigacion/new', nuevaPersona);
   }
 
-  //modificar un grup
-  modificarGrupo(grupomodificado: GrupoInvestigacion, id: String): Observable<any>{
-    return this.http.put(environment.apiURL + "/gruposinvestigacion/update/" + id, grupomodificado);
-  }
-
-  //elminar un grup
-  eliminarGrupo(id: String): Observable<any>{
-    return this.http.delete<GrupoInvestigacion>(environment.apiURL + "/gruposinvestigacion/"+ id);
-    //return this.http.delete(this.apiURL+'/delete'+`/${id}`);
+  //Editar una persona
+  modificarPersona(personamodificada: GrupoInvestigacion, dni: String): Observable<any>{
+    return this.http.put(environment.apiURL + "/gruposinvestigacion/update/" + dni, personamodificada);
   }
 }

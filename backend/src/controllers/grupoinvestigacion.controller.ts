@@ -1,20 +1,9 @@
 import { Request, Response} from "express";
 import { getAllJSDocTags } from "typescript";
-//import grupoinvestigacion from "../models/grupoinvestigacion";
 import GrupoInvestigacion from "../models/grupoinvestigacion"
+import vacunas from "../models/vacunas";
 
-/*
-○ Formulario para añadir un grupo de investigación que ha desarrollado una
-vacuna: nombre del grupo, descripción. Url, responsable del grupo
-
-○ Listado de grupos de investigación
-
-○ Edición de un grupo de investigación. (Esta funcionalidad es accesible desde el
-listado)
-*/
-
-
-//obtenir tots els equips d'investigació
+//obtenemos lista de todas las personas que se pueden vigilar
 function getAll (req:Request, res:Response): void {
     GrupoInvestigacion.find({}).then((data)=>{
         let status: number = 200;
@@ -27,8 +16,8 @@ function getAll (req:Request, res:Response): void {
     })
 }
 
-//obtenir grup d'investigació
-function getGrupoInvestigacion (req:Request, res:Response): void {
+//obtenemos una persona a vigilar
+function getPersonaVigilada (req:Request, res:Response): void {
     GrupoInvestigacion.findOne({"id":req.params.id}).then((data)=>{
         let status: number = 200;
         if(data==null) status = 404;
@@ -39,15 +28,19 @@ function getGrupoInvestigacion (req:Request, res:Response): void {
     })
 }
 
-//afegir grup d'investigació
-function newGrupoInvestigacion (req:Request, res:Response): void {
+//añadir persona a la lista
+function newPersonaVacunada (req:Request, res:Response): void {
     const grupo = new GrupoInvestigacion({
-        "nombregrupo": req.body.nombregrupo,
+        "nombrePersona": req.body.nombrePersona,
         "id": req.body.id,
-        "descripcion": req.body.descripcion,
-        "responsable": req.body.responsable,
-        "url": req.body.url
-    });
+        "fechaSeguimiento": req.body.fechaSeguimiento,
+        "dni": req.body.dni,
+        "telefono": req.body.telefono,
+        "fiebre": req.body.fiebre,
+        "tos": req.body.tos,
+        "difResp": req.body.difResp,
+        "malGen": req.body.malGen
+     });
     
     console.log(req.body);
     grupo.save().then((data) => {
@@ -57,53 +50,33 @@ function newGrupoInvestigacion (req:Request, res:Response): void {
     })
 }
 
-//modificar grup d'investigació
-function updateGrupoInvestigacion (req:Request, res:Response): void {
-    const nombregrupo: String = req.body.nombregrupo;
+//editar persona
+function updatePersonaLista (req:Request, res:Response): void {
+    
+    const nombrePersona: String = req.body.nombrePersona;
     const id = req.params.id;
-    const nuevaid = req.body.id;
-    const descripcion: String = req.body.descripcion;
-    const responsable: String = req.body.responsable;
-    const url: String = req.body.url;
+    const nuevafecha: String = req.body.fechaSeguimiento;
+    const dni: String = req.body.dni;
+    const nuevotelefono: String = req.body.telefono;
+    const fiebre: Boolean = req.body.fiebre;
+    const tos: Boolean = req.body.tos;
+    const difResp: Boolean = req.body.difResp;
+    const malGen: Boolean = req.body.malGen;
 
-
-    GrupoInvestigacion.update({"id": id}, {$set: {"nombregrupo": nombregrupo, "id": nuevaid, "descripcion": descripcion, "responsable": responsable, "url": url}}).then((data) => {
-        res.status(201).json(data);
-    }).catch((err) => {
-        res.status(500).json(err);
-    })
+    GrupoInvestigacion.update({"id": id}, {$set: {
+        "nombrePersona": nombrePersona, 
+        "id": id, 
+        "nuevafecha": nuevafecha, 
+        "dni": dni, 
+        "nuevotelefono": nuevotelefono,
+        "fiebre": fiebre,
+        "tos": tos,
+        "difResp": difResp,
+        "malGen": malGen }}).then((data) => {
+            res.status(201).json(data);
+        }).catch((err) => {
+            res.status(500).json(err);
+        })
 }
 
-//Delete grup investigacion
-
-//function deleteGrupoinvestigacion (req:Request, res:Response): void {\
-/*
-async function deleteGrupoinvestigacion(req:Request, res:Response): Promise<Response> {
-    const {id} = req.params;
-    console.log("Heelo chicos estamos aquiiiiiii   " + id);
-    await GrupoInvestigacion.findByIdAndDelete(id);
-    console.log("Heelo chicos estamos aquiiiiiii   " + id);
-    return res.json({status:'Eliminado'})
-};
-*/
-function deleteGrupoinvestigacion(req:Request, res:Response): void {
-    const { id } = req.params;
-    GrupoInvestigacion.findOne({"id":req.params.id}).remove().exec();
-
-    /*
-    console.log("ELIMINAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA             " + req.params.id)
-    GrupoInvestigacion.findByIdAndDelete(GrupoInvestigacion.findOne({"id":req.params.id})).then((data) => {
-        console.log("ESTO ES DATA " + data);
-        let status = 200;
-        if (data == null)
-            status = 404;
-        console.log(data);
-        return res.status(status).json(data);
-    }).catch((err) => {
-        console.log("esto es el error " + err);
-
-        return res.status(500).json(err);
-    });
-    */
-}
-export default { getAll, getGrupoInvestigacion, newGrupoInvestigacion, updateGrupoInvestigacion , deleteGrupoinvestigacion };
+export default { getAll, getPersonaVigilada, newPersonaVacunada, updatePersonaLista};

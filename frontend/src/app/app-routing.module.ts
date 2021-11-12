@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ModificarComponent } from './modificar/modificar.component';
-import { NuevogrupoComponent } from './nuevogrupo/nuevogrupo.component';
+import { ModificarComponent } from './modificar/modificarpersona.component';
+import { NuevogrupoComponent } from './NuevaPersona/nuevogrupo.component';
 import { PrincipalComponent } from './principal/principal.component';
 
 

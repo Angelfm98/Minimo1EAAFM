@@ -1,7 +1,11 @@
 export interface GrupoInvestigacion {
-    nombregrupo: String;
+    nombrePersona: String;
     id: String;
-    descripcion: String;
-    responsable: String;
-    url: String;
+    fechaSeguimiento: String;
+    dni: String;
+    telefono: String;
+    fiebre: Boolean;
+    tos: Boolean;
+    difResp: Boolean;
+    malGen: Boolean;
 }

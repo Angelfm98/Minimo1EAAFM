@@ -1,4 +1,5 @@
-//FITXER EXECUCIÓ DEL PROJECTE
+//Ejecución Minimo
+
 import app from './app'; 
 
 import './database'; 

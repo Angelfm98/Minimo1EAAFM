@@ -14,7 +14,7 @@ export class PrincipalComponent implements OnInit {
   constructor(private grupoService: GrupoinvestigacionService, private router: Router) { }
 
   ngOnInit(): void {
-    this.grupoService.getGrupos().subscribe(data =>{
+    this.grupoService.getPersona().subscribe(data =>{
       this.grupos = data;
       console.log(this.grupos);
     })

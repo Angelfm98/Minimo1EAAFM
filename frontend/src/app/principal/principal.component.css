@@ -1,7 +1,7 @@
 .lista{
-    float:left;
+    float:center;
 }
 
 .boton{
-    float: center;
+    float: inline-end;
 }

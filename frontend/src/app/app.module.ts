@@ -6,9 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { DatosGruposinvestigacionComponent } from './datos-gruposinvestigacion/datos-gruposinvestigacion.component';
-import { NuevogrupoComponent } from './nuevogrupo/nuevogrupo.component';
+import { NuevogrupoComponent } from './NuevaPersona/nuevogrupo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModificarComponent } from './modificar/modificar.component';
+import { ModificarComponent } from './modificar/modificarpersona.component';
 
 @NgModule({
   declarations: [

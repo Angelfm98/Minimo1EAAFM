@@ -1,22 +1,22 @@
-//Establiment connexió amb bbdd MONGOdb
+//Conexión BBDD Mongodb
 
 import mongoose, { ConnectionOptions } from 'mongoose';
 import config from './config/config';
 
-const dbOptions: ConnectionOptions = {
+const OptionsDB: ConnectionOptions = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }
 
-mongoose.connect(config.DB.URI, dbOptions);
+mongoose.connect(config.DB.URI, OptionsDB);
 
 const connection = mongoose.connection;
 
 connection.once('open', () => {
-    console.log(' ESTÀS CONECTADI A LA BBDD :) ');
+    console.log('Conectado.');
 })
 
 connection.on('error', err => {
-    console.log(err);
+    console.log("Error, no hay conexión.", err);
     process.exit(0);
 })

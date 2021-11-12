@@ -1,27 +1,35 @@
 <div class="datos-gruposinvestigacion" *ngIf="grupoinvestigacion">
     <p>
-        Nombre del Grupo: {{grupoinvestigacion.nombregrupo}}
+        Nombre de la Persona: {{grupoinvestigacion.nombrePersona}}
     </p>
 
     <p>
-        ID del Grupo: {{grupoinvestigacion.id}}
+        Numero Seguridad Social: {{grupoinvestigacion.id}}
     </p>
 
     <p>
-        Descripcion: {{grupoinvestigacion.descripcion}}
+        DNI: {{grupoinvestigacion.dni}}
     </p>
 
     <p>
-        Responsable: {{grupoinvestigacion.responsable}}
+        Telefono: {{grupoinvestigacion.telefono}}
     </p>
 
     <p>
-        Url: {{grupoinvestigacion.url}}
+        fiebre: {{grupoinvestigacion.fiebre}}
     </p>
 
-    <button (click) = "delete()">
-        ELIMINAR
-    </button>
+    <p>
+        tos: {{grupoinvestigacion.tos}}
+    </p>
+
+    <p>
+        Dificultad Respiratoria: {{grupoinvestigacion.difResp}}
+    </p>
+
+    <p>
+        Malestar General: {{grupoinvestigacion.malGen}}
+    </p>
 
     <button (click) = "modificar()">
         MODIFICAR
